@@ -1,12 +1,15 @@
 version: '3.8'
 
 services:
-  scalex-bot-discord:
-    build: .
-    container_name: scalex-bot-discord
-    restart: always
-    env_file:
-      - .env
+  bot:
+    image: node:18
+    environment:
+      - DISCORD_TOKEN=${DISCORD_TOKEN}
+      - CHANNEL_LOG_ID=${CHANNEL_LOG_ID}
     volumes:
-      - ./data:/app/data
+      - bot_data:/app/data
     working_dir: /app
+    command: sh -c "npm install && node index.js"
+
+volumes:
+  bot_data:
