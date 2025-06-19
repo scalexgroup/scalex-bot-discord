@@ -3,10 +3,10 @@ version: '3.8'
 services:
   bot:
     image: node:18
+    working_dir: /app
+    volumes:
+      - .:/app
     environment:
       - DISCORD_TOKEN=${DISCORD_TOKEN}
       - CHANNEL_LOG_ID=${CHANNEL_LOG_ID}
-    working_dir: /app
-    volumes:
-      - ./:/app
     command: sh -c "npm install && node index.js"
