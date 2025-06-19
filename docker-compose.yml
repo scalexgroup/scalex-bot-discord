@@ -6,10 +6,7 @@ services:
     environment:
       - DISCORD_TOKEN=${DISCORD_TOKEN}
       - CHANNEL_LOG_ID=${CHANNEL_LOG_ID}
-    volumes:
-      - bot_data:/app/data
     working_dir: /app
+    volumes:
+      - ./:/app
     command: sh -c "npm install && node index.js"
-
-volumes:
-  bot_data:
